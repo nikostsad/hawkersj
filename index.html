@@ -61,7 +61,7 @@
 button:active {
   outline: none;
 }
-#ingredients-button {
+#live-button {
   display: none;
   /* Add any additional styling for the button here */
   background-color: #ff8c00;
@@ -179,12 +179,12 @@ button:active {
       <button class="sub-button" id="hawker-button">Hawker</button>
     </div>
     <div class="button-container" id="button-container">
-      <button class="sub-button">Info</button>
+      <button class="sub-button">Konzept</button>
       <button class="sub-button" id="street-food-button">Street Food</button>
       <button class="sub-button">Team Hawker</button>
-      <button class="sub-button">Karriere</button>
+      <button class="sub-button">Info</button>
     </div>
-    <button id="ingredients-button" class="ingredients-button-class">Ingredients</button>
+    <button id="live-button" class="live-button-class">LIVE</button>
     <div class="switch-container" id="switch-container">
       <div class="switch" id="three-state-switch">
         <div class="indicator"></div>
@@ -203,15 +203,15 @@ button:active {
             <div class="description">Garnelen, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
        </div>
            <div class="image-wrapper">
-         <img src="https://i.imgur.com/QpgGbR4.jpg" alt="Image Larb Gai" class="food-image">
+         <img src="https://i.imgur.com/dDJFaoG.jpg" alt="Image Larb Gai" class="food-image">
               <div class="description">Hühnerbrustfilet, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
        </div>
              <div class="image-wrapper">
-         <img src="https://i.imgur.com/CBwi0b1.jpg" alt="Image Thai Green Curry Chicken" class="food-image">
-                             <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Green, Hühnerbrustfilet</div>
+         <img src="https://i.imgur.com/QpgGbR4.jpg" alt="Image Thai Red Curry Chicken" class="food-image">
+                             <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Red, Hühnerbrustfilet</div>
       </div>
                <div class="image-wrapper">
-         <img src="https://i.imgur.com/845wkgf.jpg" alt="Image Beef Salad" class="food-image">
+         <img src="https://i.imgur.com/Y9Hq87m.jpg" alt="Image Thai Green Curry Chicken" class="food-image">
                   <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Green, Hühnerbrustfilet</div>
      </div>
                  <div class="image-wrapper">
@@ -222,6 +222,10 @@ button:active {
        <img src="https://i.imgur.com/4AfIr0S.jpg" alt="Image Pan Eggs" class="food-image">
                       <div class="description">Schweinehack, Moo Yoo, Gun Chiang, Eier, Frühlingszwiebeln, Rapsöl, Schalotten, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Hühnerfond, Butter, Weißer Pfeffer, Gurke, Brötchen</div>
       </div>
+                           <div class="image-wrapper">
+        <img src="https://i.imgur.com/3l2DPF9.jpg" alt="Image Fried Pork Belly" class="food-image">
+                        <div class="description">Schweinebauch, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl, Tapiokastärke</div>
+     </div>
                      <div class="image-wrapper">
         <img src="https://i.imgur.com/GqMqPYb.jpg" alt="Image Chicken Wings" class="food-image">
                         <div class="description">Hühnerflügel, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl</div>
@@ -251,7 +255,7 @@ button:active {
   const threeStateSwitch = document.getElementById("three-state-switch");
   const indicator = threeStateSwitch.querySelector(".indicator");
   const labels = Array.from(threeStateSwitch.querySelectorAll(".label"));
-  const ingredientsButton = document.getElementById("ingredients-button");
+  const liveButton = document.getElementById("live-button");
   const imageContainer = document.getElementById("image-container");
   const foodImages = Array.from(imageContainer.querySelectorAll(".food-image"));
 
@@ -270,10 +274,10 @@ button:active {
         if (currentState === "main-dishes" && index < 5) { // Adjusted to < 5
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
-        } else if (currentState === "specials" && index >= 5 && index < 8) { // Adjusted from index >= 4 to index >= 5
+        } else if (currentState === "specials" && index >= 5 && index < 9) { // Adjusted from index >= 4 to index >= 5
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
-        } else if (currentState === "sweets" && index >= 8 && index < 12) {
+        } else if (currentState === "sweets" && index >= 9 && index < 13) {
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
         } else {
@@ -294,14 +298,14 @@ hawkerButton.addEventListener("click", function () {
     
     // Hide everything else when showing buttonContainer
     switchContainer.style.display = "none";
-    ingredientsButton.style.display = "none"; 
+    liveButton.style.display = "none"; 
     imageContainer.style.display = "none";    
 });
 
 streetFoodButton.addEventListener("click", function () {
-    // Toggle visibility of ingredientsButton and switchContainer
-   if (ingredientsButton.style.display === "none" || ingredientsButton.style.display === "") {
-    ingredientsButton.style.display = "block";
+    // Toggle visibility of liveButton and switchContainer
+   if (liveButton.style.display === "none" || liveButton.style.display === "") {
+    liveButton.style.display = "block";
 }
 
 if (switchContainer.style.display === "none" || switchContainer.style.display === "") {
@@ -329,29 +333,23 @@ indicator.style.left = `${currentStateIndex * 33.33}%`;
     console.log(currentState);
     updateImageVisibility();
   });
-  const infoButton = Array.from(
-    buttonContainer.querySelectorAll(".sub-button")
-  ).find((btn) => btn.textContent === "Info");
-  const teamHawkerButton = Array.from(
-    buttonContainer.querySelectorAll(".sub-button")
-  ).find((btn) => btn.textContent === "Team Hawker");
-  const karriereButton = Array.from(
-    buttonContainer.querySelectorAll(".sub-button")
-  ).find((btn) => btn.textContent === "Karriere");
+  
 
   // Function to hide the switch if it is visible
-    const hideSwitchAndUpdateImages = function () {
-    if (switchContainer.style.display === "flex") {
-      switchContainer.style.display = "none";
-    }
-    ingredientsButton.style.display = "none"; // Hide the Ingredients button
-    updateImageVisibility(); // Update image visibility when hiding the switch
-  };
-  // Add click event listeners to the buttons
-  infoButton.addEventListener("click", hideSwitchAndUpdateImages);
-  teamHawkerButton.addEventListener("click", hideSwitchAndUpdateImages);
-  karriereButton.addEventListener("click", hideSwitchAndUpdateImages);
-});
+  const hideEverything = function () {
+    switchContainer.style.display = "none";
+    liveButton.style.display = "none";
+    imageContainer.style.display = "none";    
+};
+
+const konzeptButton = buttonContainer.querySelector('button:nth-child(1)');
+const teamHawkerButton = buttonContainer.querySelector('button:nth-child(3)');
+const infoButton = buttonContainer.querySelector('button:nth-child(4)');
+
+konzeptButton.addEventListener("click", hideEverything);
+teamHawkerButton.addEventListener("click", hideEverything);
+infoButton.addEventListener("click", hideEverything);
+  });
  </script>
 </body>
 </html>
