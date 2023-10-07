@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Hawker Website</title>
+ body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+.background-container {
+  background-image: url("https://i.imgur.com/byFbnf8.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed; /* Geändert von absolute zu fixed */
+  top: 0;
+  left: 0;
+  opacity: 0.87;
+  width: 100%; /* Geändert von 100vw zu 100% */
+  height: 100%; /* Geändert von 100vh zu 100% */
+  z-index: -1;
+}
+.container {
+  position: relative;
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hawker-button button {
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.button-container {
+  display: none;
+  margin-top: 20px;
+  position: absolute;
+  width: 100%; /* you might need to adjust this */
+  justify-content: center; /* Add this to center the flex items horizontally */
+  align-items: center;
+}
+
+.sub-button {
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+button:active {
+  outline: none;
+}
+#ingredients-button {
+  display: none;
+  /* Add any additional styling for the button here */
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  margin-top: 100px;
+  position: absolute;
+  left: 200px;
+}
+.switch-container {
+  display: none;
+  margin-top: 20px;
+  position: absolute;
+  width: 100%;
+  top: calc(80px + 50px); /* Adjust as needed */
+  justify-content: center; /* Centering horizontally */
+  align-items: center; /* Centering vertically */
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 300px; /* Adjust as needed */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.indicator {
+  position: absolute;
+  height: 100%;
+  width: 33.33%;
+  background-color: #ff8c00;
+  transition: left 0.3s ease-in-out;
+  z-index: 1;
+  left: 0;
+}
+
+.label {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+/* Initial state */
+#image-container {
+   display: none; /* Hide by default */
+  margin: 210px auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* This creates a 4 column grid */
+  gap: 40px; /* This is the space between each image */
+  max-width: 1800px; /* Adjust this to your liking */
+}
+.image-wrapper {
+  display: none; /* Add this line */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transform: scale(1); /* Starting state */
+  transition: transform 0.2s ease; /* Smooth transition for hover effect */
+}
+.description {
+    position: absolute;
+    left: 10px; /* Adjust based on your preference */
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+     bottom:10px; 
+    top: auto; 
+}
+
+.image-wrapper:hover .description {
+    visibility: visible; /* Show on hover */
+    opacity: 1;
+}
+
+.image-wrapper:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+.food-image {
+  width: 100%;
+ display: none;
+}
+.image-wrapper:nth-of-type(2) {
+  border: 9px solid red;
+}
+
+.image-wrapper:nth-of-type(1),
+.image-wrapper:nth-of-type(5) {
+  border: 9px solid yellow;
+  }
+  .image-wrapper:nth-of-type(3),
+.image-wrapper:nth-of-type(4) {
+ border: 9px solid green;
+  }
+</head>
+
+<body>
+  <div class="container">
+    <div class="background-container"></div>
+    <div class="hawker-button">
+      <button class="sub-button" id="hawker-button">Hawker</button>
+    </div>
+    <div class="button-container" id="button-container">
+      <button class="sub-button">Info</button>
+      <button class="sub-button" id="street-food-button">Street Food</button>
+      <button class="sub-button">Team Hawker</button>
+      <button class="sub-button">Karriere</button>
+    </div>
+    <button id="ingredients-button" class="ingredients-button-class">Ingredients</button>
+    <div class="switch-container" id="switch-container">
+      <div class="switch" id="three-state-switch">
+        <div class="indicator"></div>
+        <div class="label" data-state="main-dishes">Main Dishes</div>
+        <div class="label" data-state="specials">Specials</div>
+        <div class="label" data-state="sweets">Sweets</div>
+      </div>
+    </div>
+    <div class="image-container" id="image-container">
+       <div class="image-wrapper">
+      <img src="https://i.imgur.com/8g7Zhdj.jpg" alt="Image Pad Kra Pao Gai" class="food-image">
+           <div class="description">Hühnerbrustfilet, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
+						       </div>
+         <div class="image-wrapper">
+         <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice" class="food-image">
+            <div class="description">Garnelen, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
+       </div>
+           <div class="image-wrapper">
+         <img src="https://i.imgur.com/QpgGbR4.jpg" alt="Image Larb Gai" class="food-image">
+              <div class="description">Hühnerbrustfilet, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
+       </div>
+             <div class="image-wrapper">
+         <img src="https://i.imgur.com/CBwi0b1.jpg" alt="Image Thai Green Curry Chicken" class="food-image">
+                             <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Green, Hühnerbrustfilet</div>
+      </div>
+               <div class="image-wrapper">
+         <img src="https://i.imgur.com/845wkgf.jpg" alt="Image Beef Salad" class="food-image">
+                  <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Green, Hühnerbrustfilet</div>
+     </div>
+                 <div class="image-wrapper">
+        <img src="https://i.imgur.com/Bp41HS6.jpg" alt="Image Pad Thai" class="food-image">
+                    <div class="description">Garnelen, Chilipulver, Tofu, Reisbandnudeln (5mm), Dried Shrimp, Knoblauch, Schalotten, Gelber Rettich, Chiliflocken, Erdnüsse, Sojasprossen, langer Koriander, Limette, Eier, Rapsöl, Hühnerfond, Palmsugar, Wasser, Fischsoße, Tamarind</div>
+      </div>
+                   <div class="image-wrapper">
+       <img src="https://i.imgur.com/4AfIr0S.jpg" alt="Image Pan Eggs" class="food-image">
+                      <div class="description">Schweinehack, Moo Yoo, Gun Chiang, Eier, Frühlingszwiebeln, Rapsöl, Schalotten, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Hühnerfond, Butter, Weißer Pfeffer, Gurke, Brötchen</div>
+      </div>
+                     <div class="image-wrapper">
+        <img src="https://i.imgur.com/GqMqPYb.jpg" alt="Image Chicken Wings" class="food-image">
+                        <div class="description">Hühnerflügel, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl</div>
+     </div>
+                       <div class="image-wrapper">
+        <img src="https://i.imgur.com/X33Atck.jpg" alt="Image Sticky Pancakes" class="food-image">
+                          <div class="description">Glutinous Rice Flour, Frozen Banane, Kokosmilch, Kokosraspeln, Palmsugar, Salz, Kokosnussfleisch gefroren</div>
+      </div>
+                         <div class="image-wrapper">
+        <img src="https://i.imgur.com/tTZoHUb.jpg" alt="Image Mango Sticky Rice" class="food-image">
+                            <div class="description">Mango, Sticky Rice, Kokosmilch, Salz, Wasser, Palmsugar, Mungbohnen</div>
+      </div>
+                           <div class="image-wrapper">
+        <img src="https://i.imgur.com/gWHjl6X.jpg" alt="Image Fried Bananas" class="food-image">
+                              <div class="description">Reismehl, Kochbanane, Kokosraspeln, Salz, Rapsöl, Wasser, Zucker (weiß), Backpulver</div>
+      </div>
+                             <div class="image-wrapper">
+        <img src="https://i.imgur.com/ZtkxYQJ.jpg" alt="Image Pandan Pancakes" class="food-image">
+                                <div class="description">Weizenmehl 550, Milch 3,5 %, Zucker (weiß), Backpulver, Eier, Salz, Pandan, Filling, Kokosmilch, Maisstärke, Zucker (weiß), Eier</div>
+    </div>
+  </div>
+  <script document.addEventListener("DOMContentLoaded", function () {
+  const hawkerButton = document.getElementById("hawker-button");
+  const buttonContainer = document.getElementById("button-container");
+  const streetFoodButton = document.getElementById("street-food-button");
+  const switchContainer = document.getElementById("switch-container");
+  const threeStateSwitch = document.getElementById("three-state-switch");
+  const indicator = threeStateSwitch.querySelector(".indicator");
+  const labels = Array.from(threeStateSwitch.querySelectorAll(".label"));
+  const ingredientsButton = document.getElementById("ingredients-button");
+  const imageContainer = document.getElementById("image-container");
+  const foodImages = Array.from(imageContainer.querySelectorAll(".food-image"));
+
+  let currentStateIndex = 0;
+
+  function updateImageVisibility() {
+    const currentState = labels[currentStateIndex].dataset.state;
+    imageContainer.style.display = "grid";
+
+    // Get all image wrappers
+    const imageWrappers = Array.from(imageContainer.querySelectorAll(".image-wrapper"));
+    // Hide all image wrappers initially
+    imageWrappers.forEach(wrapper => wrapper.style.display = "none");
+
+    foodImages.forEach((img, index) => {
+        if (currentState === "main-dishes" && index < 5) { // Adjusted to < 5
+            img.style.display = "block";
+            imageWrappers[index].style.display = "block"; // Display the wrapper
+        } else if (currentState === "specials" && index >= 5 && index < 8) { // Adjusted from index >= 4 to index >= 5
+            img.style.display = "block";
+            imageWrappers[index].style.display = "block"; // Display the wrapper
+        } else if (currentState === "sweets" && index >= 8 && index < 12) {
+            img.style.display = "block";
+            imageWrappers[index].style.display = "block"; // Display the wrapper
+        } else {
+            img.style.display = "none";
+        }
+    });
+}
+
+
+
+
+hawkerButton.addEventListener("click", function () {
+   const computedStyle = getComputedStyle(buttonContainer);
+        const isButtonContainerVisible = computedStyle.display === "flex";
+        
+        buttonContainer.style.display = isButtonContainerVisible ? "none" : "flex";
+
+    
+    // Hide everything else when showing buttonContainer
+    switchContainer.style.display = "none";
+    ingredientsButton.style.display = "none"; 
+    imageContainer.style.display = "none";    
+});
+
+streetFoodButton.addEventListener("click", function () {
+    // Toggle visibility of ingredientsButton and switchContainer
+   if (ingredientsButton.style.display === "none" || ingredientsButton.style.display === "") {
+    ingredientsButton.style.display = "block";
+}
+
+if (switchContainer.style.display === "none" || switchContainer.style.display === "") {
+    switchContainer.style.display = "flex";
+}
+    
+    // ONLY after clicking on "Street Food", update the image visibility
+    imageContainer.style.display = "grid";
+  updateImageVisibility();
+});
+
+
+  threeStateSwitch.addEventListener("click", function (event) {
+    // Get the width of the switch and the clicked position within the switch
+    const switchWidth = threeStateSwitch.offsetWidth;
+    const clickX =
+      event.clientX - threeStateSwitch.getBoundingClientRect().left;
+
+    // Determine which third of the switch is clicked
+    const clickedThird = Math.floor((clickX / switchWidth) * 3);
+    currentStateIndex = clickedThird;
+indicator.style.left = `${currentStateIndex * 33.33}%`;
+
+    const currentState = labels[currentStateIndex].dataset.state;
+    console.log(currentState);
+    updateImageVisibility();
+  });
+  const infoButton = Array.from(
+    buttonContainer.querySelectorAll(".sub-button")
+  ).find((btn) => btn.textContent === "Info");
+  const teamHawkerButton = Array.from(
+    buttonContainer.querySelectorAll(".sub-button")
+  ).find((btn) => btn.textContent === "Team Hawker");
+  const karriereButton = Array.from(
+    buttonContainer.querySelectorAll(".sub-button")
+  ).find((btn) => btn.textContent === "Karriere");
+
+  // Function to hide the switch if it is visible
+    const hideSwitchAndUpdateImages = function () {
+    if (switchContainer.style.display === "flex") {
+      switchContainer.style.display = "none";
+    }
+    ingredientsButton.style.display = "none"; // Hide the Ingredients button
+    updateImageVisibility(); // Update image visibility when hiding the switch
+  };
+  // Add click event listeners to the buttons
+  infoButton.addEventListener("click", hideSwitchAndUpdateImages);
+  teamHawkerButton.addEventListener("click", hideSwitchAndUpdateImages);
+  karriereButton.addEventListener("click", hideSwitchAndUpdateImages);
+});
+ </script>
+</body>
+</html>
