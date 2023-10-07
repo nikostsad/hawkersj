@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Hawker Website</title>
- body {
+ <style>
+	body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -168,8 +169,9 @@ button:active {
 .image-wrapper:nth-of-type(4) {
  border: 9px solid green;
   }
-</head>
-
+</style>
+ </head>
+ 
 <body>
   <div class="container">
     <div class="background-container"></div>
@@ -241,7 +243,7 @@ button:active {
                                 <div class="description">Weizenmehl 550, Milch 3,5 %, Zucker (weiß), Backpulver, Eier, Salz, Pandan, Filling, Kokosmilch, Maisstärke, Zucker (weiß), Eier</div>
     </div>
   </div>
-  <script document.addEventListener("DOMContentLoaded", function () {
+  <script> document.addEventListener("DOMContentLoaded", function () {
   const hawkerButton = document.getElementById("hawker-button");
   const buttonContainer = document.getElementById("button-container");
   const streetFoodButton = document.getElementById("street-food-button");
