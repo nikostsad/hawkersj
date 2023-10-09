@@ -183,6 +183,21 @@ button:active {
     z-index: 10;
     margin-top: 400px;
 }
+.opening-times-widget {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-top: 120px;
+    transform: translateX(-50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1000; /* To make sure it appears above most other content */
+    width: 200px; /* Adjust as necessary */
+    text-align: center; /* Center the text */
+    border-radius: 10px; /* Rounded corners */
+}	 
 </style>
  </head>
  
@@ -273,7 +288,11 @@ button:active {
     <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=7.847454249858857%2C47.99411125778529%2C7.850884795188905%2C47.99569797183996&amp;layer=mapnik&amp;marker=47.9949046209118%2C7.84916952252388" style="border: 1px solid black"></iframe>
     <br/>
     <small><a href="https://www.openstreetmap.org/?mlat=47.99490&amp;mlon=7.84917#map=19/47.99490/7.84917">Größere Karte anzeigen</a></small>
-</div>  
+</div> 
+ <div class="opening-times-widget" id="opening-times-widget">
+    <strong>Opening Times:</strong><br>
+    Monday-Friday: 11:00 - 22:00
+</div>	    
 </div>
   <script> document.addEventListener("DOMContentLoaded", function () {
   const hawkerButton = document.getElementById("hawker-button");
@@ -330,6 +349,7 @@ hawkerButton.addEventListener("click", function () {
     imageContainer.style.display = "none";   
    // Add this line to hide the map whenever Hawker is clicked.
     document.getElementById('map-container').style.display = "none";
+ 	document.getElementById('opening-times-widget').style.display = "none";
 });
 
 streetFoodButton.addEventListener("click", function () {
@@ -347,6 +367,7 @@ if (switchContainer.style.display === "none" || switchContainer.style.display ==
   updateImageVisibility();
    // Add this line to hide the map whenever Street Food is clicked.
   document.getElementById('map-container').style.display = "none";
+	 document.getElementById('opening-times-widget').style.display = "none";
 });
 
 
@@ -383,15 +404,19 @@ konzeptButton.addEventListener("click", hideEverything);
 teamHawkerButton.addEventListener("click", hideEverything);
 infoButton.addEventListener("click", hideEverything);
   
- let buttons = document.querySelectorAll('.sub-button');
+let buttons = document.querySelectorAll('.sub-button');
 buttons.forEach(function(button) {
     if (button.textContent.includes("Info")) {
         button.addEventListener('click', function() {
             let mapContainer = document.getElementById('map-container');
-            if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
+           let openingTimesWidget = document.getElementById('opening-times-widget');
+             if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
                 mapContainer.style.display = "block";
+                openingTimesWidget.style.display = "block"; // show the widget
+                initializeMap(); // Initialize the map when showing it
             } else {
                 mapContainer.style.display = "none";
+                openingTimesWidget.style.display = "none"; // hide the widget
             }
         });
     }
