@@ -120,8 +120,8 @@ button:active {
   margin: 210px auto 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* This creates a 4 column grid */
-  gap: 40px; /* This is the space between each image */
-  max-width: 1800px; /* Adjust this to your liking */
+  gap: 60px; /* This is the space between each image */
+  max-width: 1700px; /* Adjust this to your liking */
 }
 .image-wrapper {
   display: none; /* Add this line */
@@ -157,23 +157,37 @@ button:active {
   width: 100%;
  display: none;
 }
-.image-wrapper:nth-of-type(2) {
+.image-wrapper:nth-of-type(5),
+.image-wrapper:nth-of-type(2){
   border: 9px solid red;
 }
 
 .image-wrapper:nth-of-type(1),
-.image-wrapper:nth-of-type(5) {
+.image-wrapper:nth-of-type(3),
+.image-wrapper:nth-of-type(4){
   border: 9px solid yellow;
   }
-  .image-wrapper:nth-of-type(3),
-.image-wrapper:nth-of-type(4) {
+.image-wrapper:nth-of-type(6),
+.image-wrapper:nth-of-type(7){
  border: 9px solid green;
   }
+.map-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+    margin-top: 400px;
+}
 </style>
  </head>
  
 <body>
-  <div class="container">
+    <div class="container">
     <div class="background-container"></div>
     <div class="hawker-button">
       <button class="sub-button" id="hawker-button">Hawker</button>
@@ -195,19 +209,27 @@ button:active {
     </div>
     <div class="image-container" id="image-container">
        <div class="image-wrapper">
-      <img src="https://i.imgur.com/8g7Zhdj.jpg" alt="Image Pad Kra Pao Gai" class="food-image">
+      <img src="https://i.imgur.com/W7oqYuc.jpg" alt="Image Pad Kra Pao Gai" class="food-image">
            <div class="description">Hühnerbrustfilet, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
-						       </div>
+</div>
+        <div class="image-wrapper">
+      <img src="https://i.imgur.com/f2cpBiJ.jpg" alt="Image Pad Kra Pao Moo" class="food-image">
+           <div class="description">Schweinehack, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
+</div>
          <div class="image-wrapper">
          <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice" class="food-image">
             <div class="description">Garnelen, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
        </div>
            <div class="image-wrapper">
-         <img src="https://i.imgur.com/dDJFaoG.jpg" alt="Image Larb Gai" class="food-image">
+         <img src="https://i.imgur.com/KaFBEyi.jpg" alt="Image Larb Gai" class="food-image">
               <div class="description">Hühnerbrustfilet, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
        </div>
+        <div class="image-wrapper">
+         <img src="https://i.imgur.com/dDJFaoG.jpg" alt="Image Larb Moo" class="food-image">
+              <div class="description">Schweinehack, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
+       </div>
              <div class="image-wrapper">
-         <img src="https://i.imgur.com/QpgGbR4.jpg" alt="Image Thai Red Curry Chicken" class="food-image">
+         <img src="https://i.imgur.com/uVL99i1.jpg" alt="Image Thai Red Curry Chicken" class="food-image">
                              <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Red, Hühnerbrustfilet</div>
       </div>
                <div class="image-wrapper">
@@ -247,6 +269,12 @@ button:active {
                                 <div class="description">Weizenmehl 550, Milch 3,5 %, Zucker (weiß), Backpulver, Eier, Salz, Pandan, Filling, Kokosmilch, Maisstärke, Zucker (weiß), Eier</div>
     </div>
   </div>
+  <div class="map-container" id="map-container">
+    <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=7.847454249858857%2C47.99411125778529%2C7.850884795188905%2C47.99569797183996&amp;layer=mapnik&amp;marker=47.9949046209118%2C7.84916952252388" style="border: 1px solid black"></iframe>
+    <br/>
+    <small><a href="https://www.openstreetmap.org/?mlat=47.99490&amp;mlon=7.84917#map=19/47.99490/7.84917">Größere Karte anzeigen</a></small>
+</div>  
+</div>
   <script> document.addEventListener("DOMContentLoaded", function () {
   const hawkerButton = document.getElementById("hawker-button");
   const buttonContainer = document.getElementById("button-container");
@@ -271,13 +299,13 @@ button:active {
     imageWrappers.forEach(wrapper => wrapper.style.display = "none");
 
     foodImages.forEach((img, index) => {
-        if (currentState === "main-dishes" && index < 5) { // Adjusted to < 5
+        if (currentState === "main-dishes" && index < 7) { // Adjusted to < 5
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
-        } else if (currentState === "specials" && index >= 5 && index < 9) { // Adjusted from index >= 4 to index >= 5
+        } else if (currentState === "specials" && index >= 7 && index < 11) { // Adjusted from index >= 4 to index >= 5
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
-        } else if (currentState === "sweets" && index >= 9 && index < 13) {
+        } else if (currentState === "sweets" && index >= 11 && index < 15) {
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
         } else {
@@ -299,7 +327,9 @@ hawkerButton.addEventListener("click", function () {
     // Hide everything else when showing buttonContainer
     switchContainer.style.display = "none";
     liveButton.style.display = "none"; 
-    imageContainer.style.display = "none";    
+    imageContainer.style.display = "none";   
+   // Add this line to hide the map whenever Hawker is clicked.
+    document.getElementById('map-container').style.display = "none";
 });
 
 streetFoodButton.addEventListener("click", function () {
@@ -315,6 +345,8 @@ if (switchContainer.style.display === "none" || switchContainer.style.display ==
     // ONLY after clicking on "Street Food", update the image visibility
     imageContainer.style.display = "grid";
   updateImageVisibility();
+   // Add this line to hide the map whenever Street Food is clicked.
+  document.getElementById('map-container').style.display = "none";
 });
 
 
@@ -339,7 +371,8 @@ indicator.style.left = `${currentStateIndex * 33.33}%`;
   const hideEverything = function () {
     switchContainer.style.display = "none";
     liveButton.style.display = "none";
-    imageContainer.style.display = "none";    
+    imageContainer.style.display = "none";
+    document.getElementById('map-container').style.display = "none"; // hide the map
 };
 
 const konzeptButton = buttonContainer.querySelector('button:nth-child(1)');
@@ -349,7 +382,21 @@ const infoButton = buttonContainer.querySelector('button:nth-child(4)');
 konzeptButton.addEventListener("click", hideEverything);
 teamHawkerButton.addEventListener("click", hideEverything);
 infoButton.addEventListener("click", hideEverything);
-  });
+  
+ let buttons = document.querySelectorAll('.sub-button');
+buttons.forEach(function(button) {
+    if (button.textContent.includes("Info")) {
+        button.addEventListener('click', function() {
+            let mapContainer = document.getElementById('map-container');
+            if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
+                mapContainer.style.display = "block";
+            } else {
+                mapContainer.style.display = "none";
+            }
+        });
+    }
+});
+});
  </script>
 </body>
 </html>
