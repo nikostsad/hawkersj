@@ -171,33 +171,101 @@ button:active {
 .image-wrapper:nth-of-type(7){
  border: 9px solid green;
   }
-.map-container {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 10;
-    margin-top: 400px;
-}
 .opening-times-widget {
     display: none; /* Hidden by default */
     position: absolute;
     top: 10%;
     left: 50%;
-    margin-top: 120px;
+    margin-top: 80px;
     transform: translateX(-50%);
     padding: 20px;
-    background-color: #ff8c00;
+   background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 1000; /* To make sure it appears above most other content */
-    width: 200px; /* Adjust as necessary */
+    width: 400px; /* Adjust as necessary */
+  height:100px;
+  font-size:20px;
     text-align: center; /* Center the text */
     border-radius: 10px; /* Rounded corners */
-}	 
+  }
+ .map-and-overlay-wrapper {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    gap: 0px;
+    width: 800px;  /* Adjust this value as desired */
+    height: 550px; /* Adjust this value as desired */
+}  
+.overlay {
+            display: none;
+            flex: 1; 
+            grid-template-columns: repeat(2, 1fr); /* creates 2 equal-width columns */
+            row-gap: 0px;
+            column-gap: 10px;
+            justify-content: center; /* center the grid items horizontally */
+            align-items: center;
+            position: relative;
+            background-size: cover;
+            padding: 10px;
+            height: 550px; 
+            left: 70%; 
+   top: 50px;
+        }
+.map-container {
+    display: none;
+    flex: 1; 
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+     width: 650px;  /* Adjust to your desired width */
+    height: 515px;
+    top: 0; 
+    left: 70%; 
+    transform: none; 
+    margin-top: 135px; 
+    z-index: 10;
+}
+        .info-box {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+           margin-top: 15px; 
+        
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            width: 300px;   /* Add a fixed width */
+            height: 220px;  /* Add a fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            }
+        .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+           margin-bottom: 10px;
+           font-size: 30px;
+}
+.icon-location {
+    background-image: url('https://i.imgur.com/NB50Mzo.png');
+}
+.icon-phonenumber {
+    background-image: url('https://i.imgur.com/WlUQyNK.png');
+}
+.icon-payment {
+    background-image: url('https://i.imgur.com/lTZP01s.png');
+}
+.icon-mail {
+    background-image: url('https://i.imgur.com/G2MvpfW.png');
+}
 </style>
  </head>
  
@@ -211,7 +279,7 @@ button:active {
       <button class="sub-button">Konzept</button>
       <button class="sub-button" id="street-food-button">Street Food</button>
       <button class="sub-button">Team Hawker</button>
-      <button class="sub-button">Info</button>
+      <button class="sub-button" id="info-button">Info</button>
     </div>
     <button id="live-button" class="live-button-class">LIVE</button>
     <div class="switch-container" id="switch-container">
@@ -284,16 +352,37 @@ button:active {
                                 <div class="description">Weizenmehl 550, Milch 3,5 %, Zucker (weiß), Backpulver, Eier, Salz, Pandan, Filling, Kokosmilch, Maisstärke, Zucker (weiß), Eier</div>
     </div>
   </div>
-  <div class="map-container" id="map-container">
+    <div class="map-and-overlay-wrapper">
+       <div class="overlay" id="overlay">
+        <div class="info-box">
+            <div class="icon icon-location"></div>
+          <br>Bertoldstr. 4, 79187 Freiburg
+        </div>
+        <div class="info-box">
+            <div class="icon icon-phonenumber"></div>
+           <br>187187187
+        </div>
+        <div class="info-box">
+            <div class="icon icon-payment"></div>
+            <br>EC, Kreditkarte, GPAY, ApplePay
+        </div>
+        <div class="info-box">
+            <div class="icon icon-mail"></div>
+            <br>test@hawker.com
+        </div>
+    </div>
+       <div class="map-container" id="map-container">
     <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=7.847454249858857%2C47.99411125778529%2C7.850884795188905%2C47.99569797183996&amp;layer=mapnik&amp;marker=47.9949046209118%2C7.84916952252388" style="border: 1px solid black"></iframe>
     <br/>
     <small><a href="https://www.openstreetmap.org/?mlat=47.99490&amp;mlon=7.84917#map=19/47.99490/7.84917">Größere Karte anzeigen</a></small>
-</div> 
- <div class="opening-times-widget" id="opening-times-widget">
+      </div> 
+    </div>   
+    <div class="opening-times-widget" id="opening-times-widget">
     <strong>Opening Times:</strong><br>
-    Monday-Friday:<br> 11:00 - 22:00
-</div>	    
+    <br>Monday-Friday:<br> 11:00 - 22:00
 </div>
+</div>
+
   <script> document.addEventListener("DOMContentLoaded", function () {
   const hawkerButton = document.getElementById("hawker-button");
   const buttonContainer = document.getElementById("button-container");
@@ -338,18 +427,17 @@ button:active {
 
 hawkerButton.addEventListener("click", function () {
    const computedStyle = getComputedStyle(buttonContainer);
-        const isButtonContainerVisible = computedStyle.display === "flex";
+   const isButtonContainerVisible = computedStyle.display === "flex";
         
-        buttonContainer.style.display = isButtonContainerVisible ? "none" : "flex";
-
-    
+    buttonContainer.style.display = isButtonContainerVisible ? "none" : "flex";
     // Hide everything else when showing buttonContainer
     switchContainer.style.display = "none";
     liveButton.style.display = "none"; 
     imageContainer.style.display = "none";   
    // Add this line to hide the map whenever Hawker is clicked.
     document.getElementById('map-container').style.display = "none";
- 	document.getElementById('opening-times-widget').style.display = "none";
+   document.getElementById('opening-times-widget').style.display = "none";
+    document.getElementById('overlay').style.display = "none";
 });
 
 streetFoodButton.addEventListener("click", function () {
@@ -367,7 +455,8 @@ if (switchContainer.style.display === "none" || switchContainer.style.display ==
   updateImageVisibility();
    // Add this line to hide the map whenever Street Food is clicked.
   document.getElementById('map-container').style.display = "none";
-	 document.getElementById('opening-times-widget').style.display = "none";
+   document.getElementById('opening-times-widget').style.display = "none";
+   document.getElementById('overlay').style.display = "none";
 });
 
 
@@ -394,7 +483,8 @@ indicator.style.left = `${currentStateIndex * 33.33}%`;
     liveButton.style.display = "none";
     imageContainer.style.display = "none";
     document.getElementById('map-container').style.display = "none"; // hide the map
-	document.getElementById('opening-times-widget').style.display = "none";  
+     document.getElementById('opening-times-widget').style.display = "none"; // hide the opening times widget
+      document.getElementById('overlay').style.display = "none"; // hide the opening times widget
 };
 
 const konzeptButton = buttonContainer.querySelector('button:nth-child(1)');
@@ -404,20 +494,23 @@ const infoButton = buttonContainer.querySelector('button:nth-child(4)');
 konzeptButton.addEventListener("click", hideEverything);
 teamHawkerButton.addEventListener("click", hideEverything);
 infoButton.addEventListener("click", hideEverything);
-  
-let buttons = document.querySelectorAll('.sub-button');
+ 
+ let buttons = document.querySelectorAll('.sub-button');
 buttons.forEach(function(button) {
     if (button.textContent.includes("Info")) {
         button.addEventListener('click', function() {
             let mapContainer = document.getElementById('map-container');
            let openingTimesWidget = document.getElementById('opening-times-widget');
-             if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
+        let overlay = document.getElementById('overlay');     
+          if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
                 mapContainer.style.display = "block";
                 openingTimesWidget.style.display = "block"; // show the widget
+              overlay.style.display = "grid";
                 initializeMap(); // Initialize the map when showing it
             } else {
                 mapContainer.style.display = "none";
                 openingTimesWidget.style.display = "none"; // hide the widget
+               overlay.style.display = "none";
             }
         });
     }
