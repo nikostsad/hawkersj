@@ -271,11 +271,18 @@ button:active {
     top: 80px; /* Adjust this value to move the map upward */
     left: 0;   /* Adjust if needed */
 }
+	 .info-box a {
+    color: black; /* so the mail isn't blue because of the Link */
+    text-decoration: none;
+}
+.info-box a:hover {
+    text-decoration: underline; /* Optional: if you want the underline on hover */
+}
 </style>
  </head>
  
 <body>
-    <div class="container">
+     <div class="container">
     <div class="background-container"></div>
     <div class="hawker-button">
       <button class="sub-button" id="hawker-button">Hawker</button>
@@ -305,8 +312,12 @@ button:active {
            <div class="description">Schweinehack, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
 </div>
          <div class="image-wrapper">
-         <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice" class="food-image">
+         <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice Shrimp" class="food-image">
             <div class="description">Garnelen, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
+       </div>
+        <div class="image-wrapper">
+         <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice Chicken" class="food-image">
+            <div class="description">Hühnerbrustfilet, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
        </div>
            <div class="image-wrapper">
          <img src="https://i.imgur.com/cc2QMZ2.jpg" alt="Image Larb Gai" class="food-image">
@@ -373,7 +384,8 @@ button:active {
         </div>
         <div class="info-box">
             <div class="icon icon-mail"></div>
-            <br>test@hawker.com
+            <br>
+           <a href="mailto:test@hawker.com">test@hawker.com</a>
         </div>
     </div>
        <div class="map-container" id="map-container">
@@ -412,13 +424,13 @@ button:active {
     imageWrappers.forEach(wrapper => wrapper.style.display = "none");
 
     foodImages.forEach((img, index) => {
-        if (currentState === "main-dishes" && index < 7) { // Adjusted to < 5
+        if (currentState === "main-dishes" && index < 8) { // Adjusted to < 5
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
-        } else if (currentState === "specials" && index >= 7 && index < 11) { // Adjusted from index >= 4 to index >= 5
+        } else if (currentState === "specials" && index >= 8 && index < 12) { // Adjusted from index >= 4 to index >= 5
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
-        } else if (currentState === "sweets" && index >= 11 && index < 15) {
+        } else if (currentState === "sweets" && index >= 12 && index < 16) {
             img.style.display = "block";
             imageWrappers[index].style.display = "block"; // Display the wrapper
         } else {
