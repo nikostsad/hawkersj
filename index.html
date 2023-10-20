@@ -11,18 +11,20 @@
   padding: 0;
   font-family: Arial, sans-serif;
 }
+
 .background-container {
   background-image: url("https://i.imgur.com/byFbnf8.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  position: fixed; /* Geändert von absolute zu fixed */
+  position: fixed;
   top: 0;
   left: 0;
   opacity: 0.87;
-  width: 100%; /* Geändert von 100vw zu 100% */
-  height: 100%; /* Geändert von 100vh zu 100% */
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
+
 .container {
   position: relative;
   text-align: center;
@@ -38,14 +40,15 @@
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
+  outline: none;
 }
 
 .button-container {
   display: none;
   margin-top: 20px;
   position: absolute;
-  width: 100%; /* you might need to adjust this */
-  justify-content: center; /* Add this to center the flex items horizontally */
+  width: 100%;
+  justify-content: center;
   align-items: center;
 }
 
@@ -58,12 +61,9 @@
   margin: 0 10px;
   cursor: pointer;
 }
-button:active {
-  outline: none;
-}
+
 #live-button {
   display: none;
-  /* Add any additional styling for the button here */
   background-color: #ff8c00;
   color: #fff;
   padding: 10px 20px;
@@ -74,14 +74,14 @@ button:active {
   position: absolute;
   left: 200px;
 }
+
 .switch-container {
   display: none;
-  margin-top: 20px;
+  margin-top: 80px;
   position: absolute;
   width: 100%;
-  top: calc(80px + 50px); /* Adjust as needed */
-  justify-content: center; /* Centering horizontally */
-  align-items: center; /* Centering vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 .switch {
@@ -89,7 +89,7 @@ button:active {
   display: flex;
   align-items: center;
   cursor: pointer;
-  width: 300px; /* Adjust as needed */
+  width: 300px;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
@@ -111,124 +111,129 @@ button:active {
   padding: 10px;
   color: white;
   z-index: 2;
-  position: relative;
 }
 
-/* Initial state */
 #image-container {
-   display: none; /* Hide by default */
+  display: none;
   margin: 210px auto 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* This creates a 4 column grid */
-  gap: 60px; /* This is the space between each image */
-  max-width: 1700px; /* Adjust this to your liking */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  max-width: 1700px;
 }
+
 .image-wrapper {
-  display: none; /* Add this line */
+  display: none;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-  transform: scale(1); /* Starting state */
-  transition: transform 0.2s ease; /* Smooth transition for hover effect */
+  transform: scale(1);
+  transition: transform 0.2s ease;
 }
+
 .description {
-    position: absolute;
-    left: 10px; /* Adjust based on your preference */
-    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    visibility: hidden; /* Initially hidden */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-     bottom:10px; 
-    top: auto; 
+  position: absolute;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  bottom: 10px;
 }
 
 .image-wrapper:hover .description {
-    visibility: visible; /* Show on hover */
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .image-wrapper:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+  transform: scale(1.05);
 }
+
 .food-image {
   width: 100%;
- display: none;
+  display: none;
 }
-.image-wrapper:nth-of-type(5),
-.image-wrapper:nth-of-type(2){
+
+.image-wrapper:nth-of-type(6),
+.image-wrapper:nth-of-type(2) {
   border: 9px solid red;
 }
 
 .image-wrapper:nth-of-type(1),
 .image-wrapper:nth-of-type(3),
-.image-wrapper:nth-of-type(4){
+.image-wrapper:nth-of-type(4),
+.image-wrapper:nth-of-type(5) {
   border: 9px solid yellow;
-  }
-.image-wrapper:nth-of-type(6),
-.image-wrapper:nth-of-type(7){
- border: 9px solid green;
-  }
-.opening-times-widget {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    margin-top: 80px;
-    transform: translateX(-50%);
-    padding: 20px;
-   background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 1000; /* To make sure it appears above most other content */
-    width: 400px; /* Adjust as necessary */
-  height:100px;
-  font-size:20px;
-    text-align: center; /* Center the text */
-    border-radius: 10px; /* Rounded corners */
-  }
- .map-and-overlay-wrapper {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    gap: 0px;
-    width: 800px;  /* Adjust this value as desired */
-    height: 550px; /* Adjust this value as desired */
-}  
-.overlay {
-            display: none;
-            flex: 1; 
-            grid-template-columns: repeat(2, 1fr); /* creates 2 equal-width columns */
-            row-gap: 0px;
-            column-gap: 10px;
-            justify-content: center; /* center the grid items horizontally */
-            align-items: center;
-            position: relative;
-            background-size: cover;
-            padding: 10px;
-            height: 550px; 
-            left: 70%; 
-   top: 50px;
-        }
-.map-container {
-    display: none;
-    flex: 1; 
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-     width: 650px;  /* Adjust to your desired width */
-    height: 515px;
-    top: 0; 
-    left: 70%; 
-    transform: none; 
-    margin-top: 135px; 
-    z-index: 10;
 }
-        .info-box {
+
+.image-wrapper:nth-of-type(7),
+.image-wrapper:nth-of-type(8) {
+  border: 9px solid green;
+}
+
+.opening-times-widget {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-top: 80px;
+  transform: translateX(-50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 400px;
+  height: 100px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.map-and-overlay-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+  width: 800px;
+  height: 550px;
+}
+
+.overlay {
+  display: none;
+  flex: 1;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 0px;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  padding: 10px;
+  height: 550px;
+  left: 70%;
+  top: 50px;
+}
+
+.map-container {
+  display: none;
+  flex: 1;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 650px;
+  height: 515px;
+  top: 0;
+  left: 70%;
+  margin-top: 135px;
+  z-index: 10;
+}
+
+.info-box {
             padding: 25px;
             background: rgba(255, 255, 255, 0.8);
            margin-top: 15px; 
@@ -244,51 +249,150 @@ button:active {
             justify-content: center;
             align-items: center;
             }
-        .icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-           margin-bottom: 10px;
-           font-size: 30px;
+
+.icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 10px;
+  font-size: 30px;
 }
+
 .icon-location {
-    background-image: url('https://i.imgur.com/NB50Mzo.png');
+  background-image: url('https://i.imgur.com/NB50Mzo.png');
 }
+
 .icon-phonenumber {
-    background-image: url('https://i.imgur.com/WlUQyNK.png');
+  background-image: url('https://i.imgur.com/WlUQyNK.png');
 }
+
 .icon-payment {
-    background-image: url('https://i.imgur.com/lTZP01s.png');
+  background-image: url('https://i.imgur.com/lTZP01s.png');
 }
+
 .icon-mail {
-    background-image: url('https://i.imgur.com/G2MvpfW.png');
+  background-image: url('https://i.imgur.com/G2MvpfW.png');
 }
+
 .map-container iframe {
-    position: relative;
-    top: 80px; /* Adjust this value to move the map upward */
-    left: 0;   /* Adjust if needed */
+  position: relative;
+  top: 80px;
+  left: 0;
 }
-	 .info-box a {
-    color: black; /* so the mail isn't blue because of the Link */
-    text-decoration: none;
+
+.info-box a {
+  color: black;
+  text-decoration: none;
 }
+
 .info-box a:hover {
-    text-decoration: underline; /* Optional: if you want the underline on hover */
+  text-decoration: underline;
 }
+
+.info-box p {
+  margin: 20px 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 600px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-content .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin-top: 50px;
+  }
+  
+.switch-container {
+            top: 128px
+  }
+  .hawker-button button {
+    padding: 8px 15px;
+    font-size: 16px;
+  }
+
+  #live-button {
+    margin-top: 165px;
+    left: 30px;
+  }
+
+  #image-container {
+    gap: 20px;
+    max-width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .map-and-overlay-wrapper,
+  .overlay,
+  .map-container {
+    width: 100%;
+    height: auto;
+  }
+
+   .info-box {
+      width: 90%;
+    min-height: 150px; /* Set a minimum height for consistency */
+    display: flex;     /* Use flexbox for centering */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    padding: 5px;
+   margin: 10px auto;
+    font-size: 18px;
+ }
+  .opening-times-widget {
+    width: 100%;
+    margin-top: 60px;
+    height: auto;
+  }
+  .modal-content {
+    width: 80%; /* making the modal wider on mobile */
+  }
+}
+
 </style>
  </head>
  
 <body>
-     <div class="container">
+       <div class="container">
     <div class="background-container"></div>
     <div class="hawker-button">
       <button class="sub-button" id="hawker-button">Hawker</button>
     </div>
     <div class="button-container" id="button-container">
-      <button class="sub-button">Konzept</button>
+      <button class="sub-button">Concept</button>
       <button class="sub-button" id="street-food-button">Street Food</button>
       <button class="sub-button">Team Hawker</button>
       <button class="sub-button" id="info-button">Info</button>
@@ -305,67 +409,82 @@ button:active {
     <div class="image-container" id="image-container">
        <div class="image-wrapper">
       <img src="https://i.imgur.com/W7oqYuc.jpg" alt="Image Pad Kra Pao Gai" class="food-image">
-           <div class="description">Hühnerbrustfilet, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
+                    <div class="description">  <h3>Pad Kra Pao Gai</h3>
+Hühnerbrustfilet, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
 </div>
         <div class="image-wrapper">
       <img src="https://i.imgur.com/f2cpBiJ.jpg" alt="Image Pad Kra Pao Moo" class="food-image">
-           <div class="description">Schweinehack, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
+                      <div class="description"><h3>Pad Kra Pao Moo</h3>
+                        Schweinehack, Bohnen, Thai Basil, Holy Basil, Chili Rot, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Dark Soy Sauce, Light Soy Sauce, Hühnerfond, Palmsugar, Rapsöl</div>
 </div>
          <div class="image-wrapper">
          <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice Shrimp" class="food-image">
-            <div class="description">Garnelen, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
+                       <div class="description"> <h3>Fried Rice Shrimp</h3>
+              Garnelen, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
        </div>
         <div class="image-wrapper">
          <img src="https://i.imgur.com/qQ1UzYa.jpg" alt="Image Fried Rice Chicken" class="food-image">
-            <div class="description">Hühnerbrustfilet, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
+                      <div class="description"> <h3>Fried Rice Chicken</h3>
+                        Hühnerbrustfilet, Chilipulver, Eier, Reis, Limette, Spinat, Knoblauch, Chiliflocken, Frühlingszwiebeln, Schalotten, Oyster Sauce, Light Soy Sauce, Rapsöl, Zucker (weiß), Hühnerfond</div>
        </div>
            <div class="image-wrapper">
          <img src="https://i.imgur.com/cc2QMZ2.jpg" alt="Image Larb Gai" class="food-image">
-              <div class="description">Hühnerbrustfilet, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
+                         <div class="description"> <h3>Larb Gai</h3>
+                           Hühnerbrustfilet, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
        </div>
         <div class="image-wrapper">
          <img src="https://i.imgur.com/dDJFaoG.jpg" alt="Image Larb Moo" class="food-image">
-              <div class="description">Schweinehack, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
+                        <div class="description"> <h3>Larb Moo</h3>
+                          Schweinehack, langer Koriander, Limette, Schalotten, Frühlingszwiebeln, Minze, Chiliflocken, Fischsoße, Kaffir Lime Leaves, Sticky Rice, Chilipulver, Hühnerfond, Zucker (weiß).</div>
        </div>
              <div class="image-wrapper">
          <img src="https://i.imgur.com/jx69cEj.jpg" alt="Image Thai Red Curry Chicken" class="food-image">
-                             <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Red, Hühnerbrustfilet</div>
+                                         <div class="description"><h3>Thai Red Curry Chicken</h3>
+                                           Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Red, Hühnerbrustfilet</div>
       </div>
                <div class="image-wrapper">
          <img src="https://i.imgur.com/Y9Hq87m.jpg" alt="Image Thai Green Curry Chicken" class="food-image">
-                  <div class="description">Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Green, Hühnerbrustfilet</div>
+                  <div class="description"> <h3>Thai Green Curry Chicken</h3>
+                    Kaffir Lime Leaves, Palmsugar, Fischsoße, Chili Rot, Hühnerfond, Thai Basil, Kokosmilch, Bambus, Thai Aubergine, Curry Paste Green, Hühnerbrustfilet</div>
      </div>
                  <div class="image-wrapper">
         <img src="https://i.imgur.com/Bp41HS6.jpg" alt="Image Pad Thai" class="food-image">
-                    <div class="description">Garnelen, Chilipulver, Tofu, Reisbandnudeln (5mm), Dried Shrimp, Knoblauch, Schalotten, Gelber Rettich, Chiliflocken, Erdnüsse, Sojasprossen, langer Koriander, Limette, Eier, Rapsöl, Hühnerfond, Palmsugar, Wasser, Fischsoße, Tamarind</div>
+                    <div class="description"><h3>Pad Thai Chicken/Shrimp</h3>
+                      Hühnerbrustfilet/Garnelen, Chilipulver, Tofu, Reisbandnudeln (5mm), Dried Shrimp, Knoblauch, Schalotten, Gelber Rettich, Chiliflocken, Erdnüsse, Sojasprossen, langer Koriander, Limette, Eier, Rapsöl, Hühnerfond, Palmsugar, Wasser, Fischsoße, Tamarind</div>
       </div>
                    <div class="image-wrapper">
        <img src="https://i.imgur.com/4AfIr0S.jpg" alt="Image Pan Eggs" class="food-image">
-                      <div class="description">Schweinehack, Moo Yoo, Gun Chiang, Eier, Frühlingszwiebeln, Rapsöl, Schalotten, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Hühnerfond, Butter, Weißer Pfeffer, Gurke, Brötchen</div>
+                      <div class="description"> <h3>Pan Eggs</h3>
+                        Schweinehack, Moo Yoo, Gun Chiang, Eier, Frühlingszwiebeln, Rapsöl, Schalotten, Knoblauch, Chiliflocken, Oyster Sauce, Fischsoße, Hühnerfond, Butter, Weißer Pfeffer, Gurke, Brötchen</div>
       </div>
                            <div class="image-wrapper">
         <img src="https://i.imgur.com/wp318nF.jpg" alt="Image Fried Pork Belly" class="food-image">
-                        <div class="description">Schweinebauch, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl, Tapiokastärke</div>
+                        <div class="description"><h3>Fried Pork Belly</h3>
+                          Schweinebauch, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl, Tapiokastärke</div>
      </div>
                      <div class="image-wrapper">
         <img src="https://i.imgur.com/GqMqPYb.jpg" alt="Image Chicken Wings" class="food-image">
-                        <div class="description">Hühnerflügel, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl</div>
+                        <div class="description"> <h3>Chicken Wings</h3>
+                          Hühnerflügel, Fischsoße, Weißer Pfeffer, Reismehl, Rapsöl</div>
      </div>
                        <div class="image-wrapper">
         <img src="https://i.imgur.com/X33Atck.jpg" alt="Image Sticky Pancakes" class="food-image">
-                          <div class="description">Glutinous Rice Flour, Frozen Banane, Kokosmilch, Kokosraspeln, Palmsugar, Salz, Kokosnussfleisch gefroren</div>
+                          <div class="description"><h3>Sticky Pancakes</h3>
+                            Glutinous Rice Flour, Frozen Banane, Kokosmilch, Kokosraspeln, Palmsugar, Salz, Kokosnussfleisch gefroren</div>
       </div>
                          <div class="image-wrapper">
         <img src="https://i.imgur.com/tTZoHUb.jpg" alt="Image Mango Sticky Rice" class="food-image">
-                            <div class="description">Mango, Sticky Rice, Kokosmilch, Salz, Wasser, Palmsugar, Mungbohnen</div>
+                            <div class="description"><h3>Mango Sticky Rice</h3>
+                              Mango, Sticky Rice, Kokosmilch, Salz, Wasser, Palmsugar, Mungbohnen</div>
       </div>
                            <div class="image-wrapper">
         <img src="https://i.imgur.com/gWHjl6X.jpg" alt="Image Fried Bananas" class="food-image">
-                              <div class="description">Reismehl, Kochbanane, Kokosraspeln, Salz, Rapsöl, Wasser, Zucker (weiß), Backpulver</div>
+                              <div class="description"><h3>Fried Bananas</h3>
+                                Reismehl, Kochbanane, Kokosraspeln, Salz, Rapsöl, Wasser, Zucker (weiß), Backpulver</div>
       </div>
                              <div class="image-wrapper">
         <img src="https://i.imgur.com/ZtkxYQJ.jpg" alt="Image Pandan Pancakes" class="food-image">
-                                <div class="description">Weizenmehl 550, Milch 3,5 %, Zucker (weiß), Backpulver, Eier, Salz, Pandan, Filling, Kokosmilch, Maisstärke, Zucker (weiß), Eier</div>
+                                <div class="description"> <h3>Pandan Pancakes</h3>Weizenmehl 550, Milch 3,5 %, Zucker (weiß), Backpulver, Eier, Salz, Pandan, Filling, Kokosmilch, Maisstärke, Zucker (weiß), Eier</div>
     </div>
   </div>
     <div class="map-and-overlay-wrapper">
@@ -380,12 +499,13 @@ button:active {
         </div>
         <div class="info-box">
             <div class="icon icon-payment"></div>
-            <br>EC, Kreditkarte, <br>GooglePay, ApplePay
+            <br>Debit, Creditcard, <br>GooglePay, ApplePay <br><br>No Cash
         </div>
         <div class="info-box">
             <div class="icon icon-mail"></div>
             <br>
-           <a href="mailto:test@hawker.com">test@hawker.com</a>
+           <a href="mailto:test@hawker.com">test@hawker.com</a><br>
+            <br><a href="#" id="contactUsLink">Contact Us</a>
         </div>
     </div>
        <div class="map-container" id="map-container">
@@ -398,7 +518,22 @@ button:active {
     <strong>Opening Times:</strong><br>
     <br>Monday-Friday:<br> 11:00 - 22:00
 </div>
+    <div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="/submit_contact" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="mail">Mail-Adresse:</label><br>
+            <input type="email" id="mail" name="mail"><br>
+            <label for="message">Your Message:</label><br>
+            <textarea id="message" name="message"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </div>
+</div>
+
 
   <script> document.addEventListener("DOMContentLoaded", function () {
   const hawkerButton = document.getElementById("hawker-button");
@@ -438,7 +573,27 @@ button:active {
         }
     });
 }
+  var modal = document.getElementById("contactModal");
+    var contactUsLink = document.getElementById("contactUsLink");
+    var closeSpan = modal.querySelector(".close");
+    
+    // Event listener for opening the modal
+    contactUsLink.addEventListener("click", function(event) {
+        event.preventDefault();  // Prevent the default anchor link action
+        modal.style.display = "block";
+    });
 
+    // Event listener for closing the modal
+    closeSpan.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    // Event listener to close the modal when clicking outside of it
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
 
 
 
@@ -504,11 +659,11 @@ indicator.style.left = `${currentStateIndex * 33.33}%`;
       document.getElementById('overlay').style.display = "none"; // hide the opening times widget
 };
 
-const konzeptButton = buttonContainer.querySelector('button:nth-child(1)');
+const conceptButton = buttonContainer.querySelector('button:nth-child(1)');
 const teamHawkerButton = buttonContainer.querySelector('button:nth-child(3)');
 const infoButton = buttonContainer.querySelector('button:nth-child(4)');
 
-konzeptButton.addEventListener("click", hideEverything);
+conceptButton.addEventListener("click", hideEverything);
 teamHawkerButton.addEventListener("click", hideEverything);
 infoButton.addEventListener("click", hideEverything);
  
@@ -532,6 +687,7 @@ buttons.forEach(function(button) {
         });
     }
 });
+
 });
  </script>
 </body>
