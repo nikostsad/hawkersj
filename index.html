@@ -11,19 +11,21 @@
   padding: 0;
   font-family: Arial, sans-serif;
 }
-
-.background-container {
-  background-image: url("https://i.imgur.com/byFbnf8.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0.87;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+#fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* viewport width */
+    height: 100vh; /* viewport height */
+    z-index: -1;
+    background-image: url("https://i.imgur.com/byFbnf8.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.87;
+    pointer-events: none; /* Ensure it doesn't block interactions */
 }
+
 
 .container {
   position: relative;
@@ -37,8 +39,8 @@
   background-color: #ff8c00;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 5px 20px;
+  font-size: 28px;
   cursor: pointer;
   outline: none;
 }
@@ -56,10 +58,12 @@
   background-color: #ff8c00;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0px 0px;
+  font-size: 19px;
   margin: 0 10px;
   cursor: pointer;
+  width: 138px;
+  height: 50px;
 }
 
 #live-button {
@@ -70,14 +74,14 @@
   font-size: 16px;
   cursor: pointer;
   border: none;
-  margin-top: 100px;
+  margin-top: 110px;
   position: absolute;
   left: 200px;
 }
 
 .switch-container {
   display: none;
-  margin-top: 80px;
+  margin-top: 100px;
   position: absolute;
   width: 100%;
   justify-content: center;
@@ -277,6 +281,7 @@
   background-image: url('https://i.imgur.com/G2MvpfW.png');
 }
 
+
 .map-container iframe {
   position: relative;
   top: 80px;
@@ -336,14 +341,23 @@
     margin-top: 50px;
   }
   
-.switch-container {
-            top: 70px;
+  .switch-container {
+           margin-top: 89px; /* adjust this value for mobile */
+		   left: 0;
   }
   .hawker-button button {
     padding: 8px 15px;
-    font-size: 16px;
+    font-size: 24px;
+    width: 130px;
   }
-
+  .button-container {
+    left: 0;
+  }
+  .sub-button {
+    font-size:16px;
+    margin: 0 2.53px;
+    width:100px;
+  }
   #live-button {
     margin-top: 165px;
     left: 30px;
@@ -355,37 +369,63 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .map-and-overlay-wrapper,
-  .overlay,
-  .map-container {
+  .map-and-overlay-wrapper {
+    flex-direction: column;
     width: 100%;
     height: auto;
   }
 
+  .overlay {
+    width: 100%;
+    height: auto;
+	left: 0%;
+  }
+
+  .map-container {
+    order: 2; /* ensure it comes after the info-box */
+    width: 350px;
+    height: 340px;
+    margin-top: 30px; /* optional: add a little spacing */
+    left: 0%; /* Resetting left position */
+    padding: 10px;
+	padding-top: 0px;
+  }
+
    .info-box {
-      width: 90%;
+    width: 90%;
+    position: relative;
     min-height: 150px; /* Set a minimum height for consistency */
     display: flex;     /* Use flexbox for centering */
     flex-direction: column; /* Stack content vertically */
     justify-content: center; /* Center content vertically */
-    padding: 5px;
-   margin: 10px auto;
+    padding: 10px;
+   margin: -10px 0 20px;
     font-size: 18px;
+    order: 1;
  }
   .opening-times-widget {
     width: 100%;
     margin-top: 60px;
     height: auto;
+	width: 90%;
   }
   .modal-content {
     width: 80%; /* making the modal wider on mobile */
   }
+  .map-container iframe {
+  position: relative;
+  top: 10px;
+  left: 0;
+  width: 350px;
+  height: 340px;
+  margin-top:10px;
 }
 
 </style>
  </head>
  
 <body>
+	<div id="fixed-background"></div>
        <div class="container">
     <div class="background-container"></div>
     <div class="hawker-button">
